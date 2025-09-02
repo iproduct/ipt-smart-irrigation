@@ -50,19 +50,22 @@ const ZoneManagement: React.FC = () => {
     const wateringRequirementLiters = parseFloat(formData.get('wateringRequirementLiters') as string);
     const wateringIntervalHours = parseInt(formData.get('wateringIntervalHours') as string, 10);
     const valveNumber = parseInt(formData.get('valveNumber') as string, 10);
+    const flowmeter = parseInt(formData.get('flowmeter') as string, 10);
+    const moistureSensorsString = formData.get('moistureSensors') as string;
+    const moistureSensors = moistureSensorsString.split(',').map(s => parseInt(s.trim(), 10)).filter(s => !isNaN(s));
 
-    if (isNaN(wateringRequirementLiters) || isNaN(wateringIntervalHours) || isNaN(valveNumber)) {
-      setError('Please enter valid numbers for watering requirements, interval, and valve number.');
+    if (isNaN(wateringRequirementLiters) || isNaN(wateringIntervalHours) || isNaN(valveNumber) || isNaN(flowmeter) || moistureSensors.length === 0) {
+      setError('Please enter valid numbers for all fields, and at least one moisture sensor.');
       return;
     }
 
     try {
       if (currentZone) {
-        await updateZone({ ...currentZone, name, wateringRequirementLiters, wateringIntervalHours, valveNumber });
+        await updateZone({ ...currentZone, name, wateringRequirementLiters, wateringIntervalHours, valveNumber, flowmeter, moistureSensors });
         setSnackbarMessage('Zone updated successfully!');
         setSnackbarSeverity('success');
       } else {
-        await createZone({ name, wateringRequirementLiters, wateringIntervalHours, valveNumber });
+        await createZone({ name, wateringRequirementLiters, wateringIntervalHours, valveNumber, flowmeter, moistureSensors });
         setSnackbarMessage('Zone created successfully!');
         setSnackbarSeverity('success');
       }
@@ -112,7 +115,7 @@ const ZoneManagement: React.FC = () => {
               <ListItemText
                 primary={zone.name}
                 secondary={
-                  `Watering: ${zone.wateringRequirementLiters}L every ${zone.wateringIntervalHours}h | Valve: ${zone.valveNumber}`
+                  `Watering: ${zone.wateringRequirementLiters}L/${zone.wateringIntervalHours}h | Valve: ${zone.valveNumber} | Flowmeter: ${zone.flowmeter} | Moisture Sensors: ${zone.moistureSensors?.join(', ')}`
                 }
               />
               <ListItemSecondaryAction>
@@ -171,7 +174,27 @@ const ZoneManagement: React.FC = () => {
             type="number"
             fullWidth
             variant="standard"
-            defaultValue={currentZone?.valveNumber || ''}
+            defaultValue={currentZone?.valveNumber }
+            required
+          />
+          <TextField
+            margin="dense"
+            name="flowmeter"
+            label="Flowmeter Number"
+            type="number"
+            fullWidth
+            variant="standard"
+            defaultValue={currentZone?.flowmeter }
+            required
+          />
+          <TextField
+            margin="dense"
+            name="moistureSensors"
+            label="Moisture Sensors (comma-separated numbers)"
+            type="text"
+            fullWidth
+            variant="standard"
+            defaultValue={currentZone?.moistureSensors?.join(', ') || ''}
             required
           />
         </DialogContent>

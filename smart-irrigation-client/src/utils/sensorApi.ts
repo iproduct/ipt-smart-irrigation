@@ -45,6 +45,8 @@ export interface Zone {
   wateringRequirementLiters: number;
   wateringIntervalHours: number;
   valveNumber: number;
+  flowmeter: number;
+  moistureSensors: number[];
 }
 
 export type WebSocketCommand = OpenValvesCommand | OpenValveCommand | CloseValveCommand;
