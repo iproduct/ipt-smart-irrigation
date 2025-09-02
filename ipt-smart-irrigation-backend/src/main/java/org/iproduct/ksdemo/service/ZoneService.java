@@ -38,6 +38,8 @@ public class ZoneService {
                     existingZone.setWateringRequirementLiters(zone.getWateringRequirementLiters());
                     existingZone.setWateringIntervalHours(zone.getWateringIntervalHours());
                     existingZone.setValveNumber(zone.getValveNumber());
+                    existingZone.setFlowmeter(zone.getFlowmeter());
+                    existingZone.setMoistureSensors(zone.getMoistureSensors());
                     return zoneRepository.save(existingZone);
                 });
     }
