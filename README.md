@@ -1,5 +1,5 @@
-# ipt-smart-irrigation
-IPT - Intellectual Products &amp; Technologies [ https://iproduct.org ] Smart irrigation demo
+# IPT - Intellectual Products &amp; Technologies [ https://iproduct.org ] Smart Irrigation Project
+
 
 # Smart Irrigation Dashboard (React Client)
 
