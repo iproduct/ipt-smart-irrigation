@@ -18,6 +18,7 @@ function App() {
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>('');
   const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info' | 'warning'>('info');
+  const [hasConnectedSuccessfully, setHasConnectedSuccessfully] = useState<boolean>(false); // New state
   const historicalDataRef = useRef<IoTData[]>([]);
   const [, setHistoricalDataTrigger] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -111,20 +112,41 @@ function App() {
       }
     }, (error: Event | ErrorMessage) => {
       console.error('WebSocket connection error:', error);
-      setSnackbarOpen(true);
-      if ((error as ErrorMessage).type === "error") {
-        setSnackbarMessage(`WebSocket Error: ${(error as ErrorMessage).message}`);
-      } else {
-        setSnackbarMessage(`WebSocket Connection Error: ${error.type}`);
+      if (!hasConnectedSuccessfully) {
+        // Suppress error message if no successful connection has been made yet
+        return;
       }
+      setSnackbarOpen(true);
+      let messageText = 'An unknown WebSocket error occurred.';
+
+      if ((error as ErrorMessage).type === "error" && (error as ErrorMessage).message) {
+        messageText = `WebSocket Error: ${(error as ErrorMessage).message}`;
+      } else if (error instanceof Event) {
+        // For generic WebSocket Event errors, try to get more context
+        const eventError = error as Event;
+        const target = eventError.target as WebSocket;
+        if (target && target.url) {
+          messageText = `WebSocket Connection Error: Could not connect to ${target.url}`;
+        } else {
+          messageText = `WebSocket Connection Error: An unexpected error occurred.`;
+        }
+      } else if (error instanceof Error) {
+        messageText = `WebSocket Error: ${error.message}`;
+      }
+
+      setSnackbarMessage(messageText);
       setSnackbarSeverity('error');
       setTimeout(() => setSnackbarOpen(false), 5000);
+    }, () => {
+      // onOpen callback
+      setSnackbarOpen(false); // Dismiss any error snackbar on successful connection
+      setHasConnectedSuccessfully(true); // Mark as successfully connected
     });
 
     return () => {
       disconnectWebSocket();
     };
-  }, []);
+  }, [hasConnectedSuccessfully]);
 
   const fetchZonesData = async () => {
     try {

@@ -62,16 +62,25 @@ export type WebSocketIncomingMessage = IoTData | CommandAckMessage | ErrorMessag
 const WS_URL = 'ws://192.168.0.17:8080/ws';
 
 let ws: WebSocket | null = null;
+let reconnectTimeoutId: ReturnType<typeof setTimeout> | null = null; // New: to store timeout ID
 
-export const connectWebSocket = (onMessage: (data: WebSocketIncomingMessage) => void, onError: (error: Event | ErrorMessage) => void) => {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    return; // Already connected
+export const connectWebSocket = (onMessage: (data: WebSocketIncomingMessage) => void, onError: (error: Event | ErrorMessage) => void, onOpen: () => void) => {
+  // If a connection is already open or in the process of opening, do nothing.
+  if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) {
+    return;
+  }
+
+  // Clear any pending reconnection attempts
+  if (reconnectTimeoutId) {
+    clearTimeout(reconnectTimeoutId);
+    reconnectTimeoutId = null;
   }
 
   ws = new WebSocket(WS_URL);
 
   ws.onopen = () => {
     console.log('WebSocket connected');
+    onOpen();
   };
 
   ws.onmessage = (event) => {
@@ -108,23 +117,36 @@ export const connectWebSocket = (onMessage: (data: WebSocketIncomingMessage) => 
     }
   };
 
-  ws.onclose = () => {
-    console.log('WebSocket disconnected');
-    // Attempt to reconnect after a delay
-    setTimeout(() => connectWebSocket(onMessage, onError), 5000);
+  ws.onclose = (event) => {
+    console.log('WebSocket disconnected', event.code, event.reason);
+    // Only attempt to reconnect if the closure was not intentional (e.g., ws.close() was called cleanly)
+    if (!event.wasClean) {
+      reconnectTimeoutId = setTimeout(() => connectWebSocket(onMessage, onError, onOpen), 5000);
+    }
   };
 
   ws.onerror = (error) => {
     console.error('WebSocket error:', error);
     onError(error);
-    ws?.close(); // Close the connection on error to trigger reconnect
+    // Close the connection on error to trigger onclose, which handles reconnect logic
+    if (ws && ws.readyState !== WebSocket.CLOSED) {
+      ws.close();
+    }
   };
 };
 
 export const disconnectWebSocket = () => {
   if (ws) {
-    ws.close();
+    // Attempt to gracefully close if open or connecting
+    if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) {
+      ws.close(1000, "Client initiated disconnect"); // Use a standard close code
+    }
     ws = null;
+  }
+  // Clear any pending reconnection timeout as well
+  if (reconnectTimeoutId) {
+    clearTimeout(reconnectTimeoutId);
+    reconnectTimeoutId = null;
   }
 };
 
