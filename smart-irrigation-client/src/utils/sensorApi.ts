@@ -39,6 +39,11 @@ export interface CommandAckMessage {
   command: string; // The command that was acknowledged, as a JSON string
 }
 
+export interface ErrorMessage {
+  type: "error";
+  message: string;
+}
+
 export interface Zone {
   id: string;
   name: string;
@@ -47,17 +52,18 @@ export interface Zone {
   valveNumber: number;
   flowmeter: number;
   moistureSensors: number[];
+  displayPosition: number;
 }
 
-export type WebSocketCommand = OpenValvesCommand | OpenValveCommand | CloseValveCommand;
+export type WebSocketCommand = OpenValveCommand | OpenValvesCommand | CloseValveCommand;
 
-export type WebSocketIncomingMessage = IoTData | CommandAckMessage;
+export type WebSocketIncomingMessage = IoTData | CommandAckMessage | ErrorMessage;
 
 const WS_URL = 'ws://192.168.0.17:8080/ws';
 
 let ws: WebSocket | null = null;
 
-export const connectWebSocket = (onMessage: (data: WebSocketIncomingMessage) => void, onError: (error: Event) => void) => {
+export const connectWebSocket = (onMessage: (data: WebSocketIncomingMessage) => void, onError: (error: Event | ErrorMessage) => void) => {
   if (ws && ws.readyState === WebSocket.OPEN) {
     return; // Already connected
   }
@@ -82,6 +88,18 @@ export const connectWebSocket = (onMessage: (data: WebSocketIncomingMessage) => 
         onMessage(iotDataWithVolume as IoTData);
       } else if (parsedData.type === "command_ack") {
         onMessage(parsedData as CommandAckMessage);
+      } else if (parsedData.type === "error") {
+        try {
+          const errorMessage = JSON.parse(parsedData.message);
+          if (errorMessage.error) {
+            onError({ type: "error", message: errorMessage.error });
+          } else {
+            console.warn("Unknown error message format:", parsedData.message);
+          }
+        } catch (parseError) {
+          console.error("Error parsing error message:", parseError);
+          onError({ type: "error", message: parsedData.message });
+        }
       } else {
         console.warn("Unknown WebSocket message type:", parsedData.type);
       }

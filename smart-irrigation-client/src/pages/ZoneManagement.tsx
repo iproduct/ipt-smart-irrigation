@@ -5,7 +5,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { type Zone } from '../utils/sensorApi'; // Assuming Zone is still defined here
 import { getZones, createZone, updateZone, deleteZone } from '../utils/zoneApi';
 
-const ZoneManagement: React.FC = () => {
+export interface ZoneManagementProps {
+  onZonesUpdate: () => void;
+}
+
+const ZoneManagement: React.FC<ZoneManagementProps> = ({ onZonesUpdate }) => {
   const [zones, setZones] = useState<Zone[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -53,24 +57,26 @@ const ZoneManagement: React.FC = () => {
     const flowmeter = parseInt(formData.get('flowmeter') as string, 10);
     const moistureSensorsString = formData.get('moistureSensors') as string;
     const moistureSensors = moistureSensorsString.split(',').map(s => parseInt(s.trim(), 10)).filter(s => !isNaN(s));
+    const displayPosition = parseInt(formData.get('displayPosition') as string, 10);
 
-    if (isNaN(wateringRequirementLiters) || isNaN(wateringIntervalHours) || isNaN(valveNumber) || isNaN(flowmeter) || moistureSensors.length === 0) {
+    if (isNaN(wateringRequirementLiters) || isNaN(wateringIntervalHours) || isNaN(valveNumber) || isNaN(flowmeter) || moistureSensors.length === 0 || isNaN(displayPosition)) {
       setError('Please enter valid numbers for all fields, and at least one moisture sensor.');
       return;
     }
 
     try {
       if (currentZone) {
-        await updateZone({ ...currentZone, name, wateringRequirementLiters, wateringIntervalHours, valveNumber, flowmeter, moistureSensors });
+        await updateZone({ ...currentZone, name, wateringRequirementLiters, wateringIntervalHours, valveNumber, flowmeter, moistureSensors, displayPosition });
         setSnackbarMessage('Zone updated successfully!');
         setSnackbarSeverity('success');
       } else {
-        await createZone({ name, wateringRequirementLiters, wateringIntervalHours, valveNumber, flowmeter, moistureSensors });
+        await createZone({ name, wateringRequirementLiters, wateringIntervalHours, valveNumber, flowmeter, moistureSensors, displayPosition });
         setSnackbarMessage('Zone created successfully!');
         setSnackbarSeverity('success');
       }
       fetchZones();
       handleCloseDialog();
+      onZonesUpdate();
     } catch (err) {
       setSnackbarMessage(`Error: ${err instanceof Error ? err.message : 'An unknown error occurred.'}`);
       setSnackbarSeverity('error');
@@ -84,6 +90,7 @@ const ZoneManagement: React.FC = () => {
     try {
       await deleteZone(id);
       fetchZones();
+      onZonesUpdate();
       setSnackbarMessage('Zone deleted successfully!');
       setSnackbarSeverity('success');
     } catch (err) {
@@ -110,7 +117,7 @@ const ZoneManagement: React.FC = () => {
         <Typography>No zones found. Add a new one!</Typography>
       ) : (
         <List>
-          {zones.map((zone) => (
+          {[...zones].sort((a, b) => a.displayPosition - b.displayPosition).map((zone) => (
             <ListItem key={zone.id} divider>
               <ListItemText
                 primary={zone.name}
@@ -185,6 +192,16 @@ const ZoneManagement: React.FC = () => {
             fullWidth
             variant="standard"
             defaultValue={currentZone?.flowmeter }
+            required
+          />
+          <TextField
+            margin="dense"
+            name="displayPosition"
+            label="Display Position"
+            type="number"
+            fullWidth
+            variant="standard"
+            defaultValue={currentZone?.displayPosition}
             required
           />
           <TextField

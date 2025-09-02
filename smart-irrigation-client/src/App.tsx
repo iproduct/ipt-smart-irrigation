@@ -3,8 +3,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SettingsIcon from '@mui/icons-material/Settings';
 import './App.css';
-import { useState, useEffect, useRef } from 'react';
-import { connectWebSocket, disconnectWebSocket, sendWebSocketMessage, type IoTData, type WebSocketIncomingMessage } from './utils/sensorApi';
+import { useEffect, useState, useRef } from 'react';
+import { connectWebSocket, disconnectWebSocket, sendWebSocketMessage, type IoTData, type WebSocketIncomingMessage, type ErrorMessage } from './utils/sensorApi';
 import EchartsReact from 'echarts-for-react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router';
 import ZoneManagement from './pages/ZoneManagement';
@@ -15,7 +15,6 @@ const MAX_HISTORY_POINTS = 500; // Limit historical data points
 
 function App() {
   const [iotData, setIotData] = useState<IoTData | null>(null);
-  // const [commandAck, setCommandAck] = useState<string | null>(null);
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>('');
   const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info' | 'warning'>('info');
@@ -23,7 +22,6 @@ function App() {
   const [, setHistoricalDataTrigger] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [zones, setZones] = useState<Zone[]>([]);
-  // const [zonesByValve, setZonesByValve] = useState<Map<number, Zone>>(new Map());
 
   const flowChartRef = useRef<EchartsReact | null>(null);
   const moistureChartRef = useRef<EchartsReact | null>(null);
@@ -111,8 +109,16 @@ function App() {
         // Optionally clear the ack message after some time
         setTimeout(() => setSnackbarOpen(false), 5000);
       }
-    }, (error) => {
+    }, (error: Event | ErrorMessage) => {
       console.error('WebSocket connection error:', error);
+      setSnackbarOpen(true);
+      if ((error as ErrorMessage).type === "error") {
+        setSnackbarMessage(`WebSocket Error: ${(error as ErrorMessage).message}`);
+      } else {
+        setSnackbarMessage(`WebSocket Connection Error: ${error.type}`);
+      }
+      setSnackbarSeverity('error');
+      setTimeout(() => setSnackbarOpen(false), 5000);
     });
 
     return () => {
@@ -120,15 +126,16 @@ function App() {
     };
   }, []);
 
+  const fetchZonesData = async () => {
+    try {
+      const zonesData = await getZones();
+      setZones(zonesData);
+    } catch (error) {
+      console.error("Error fetching zones:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchZonesData = async () => {
-      try {
-        const zonesData = await getZones();
-        setZones(zonesData);
-      } catch (error) {
-        console.error("Error fetching zones:", error);
-      }
-    };
     fetchZonesData();
   }, []);
 
@@ -171,7 +178,6 @@ function App() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Smart Irrigation
             </Typography>
-            {/* Removed direct links from AppBar */}
           </Toolbar>
         </AppBar>
 
@@ -203,11 +209,11 @@ function App() {
           </Box>
         </Drawer>
 
-        <Box component="main" sx={{ p: 3, mt: 8 }}> {/* Added mt for spacing below AppBar */}
+        <Box component="main" sx={{ p: 3, mt: 8 }}> 
           <Routes>
             <Route path="/" element={(
               <Grid container spacing={3}>
-                {zones.map((zone) => (
+                {[...zones].sort((a, b) => a.displayPosition - b.displayPosition).map((zone) => (
                   <Grid size={{ xs: 12, sm:12, md: 6, lg: 4 }} key={zone.id}>
                     <Card>
                       <CardContent>
@@ -309,7 +315,7 @@ function App() {
                 </Grid>
               </Grid>
             )} />
-            <Route path="/zones" element={<ZoneManagement />} />
+            <Route path="/zones" element={<ZoneManagement onZonesUpdate={fetchZonesData} />} />
           </Routes>
           <Snackbar open={snackbarOpen} autoHideDuration={5000} onClose={() => setSnackbarOpen(false)}>
             <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity} sx={{ width: '100%' }}>

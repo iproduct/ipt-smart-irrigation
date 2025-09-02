@@ -19,4 +19,5 @@ public class Zone {
     private int valveNumber;
     private int flowmeter;
     private int[] moistureSensors;
+    private int displayPosition;
 }

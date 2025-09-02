@@ -40,6 +40,7 @@ public class ZoneService {
                     existingZone.setValveNumber(zone.getValveNumber());
                     existingZone.setFlowmeter(zone.getFlowmeter());
                     existingZone.setMoistureSensors(zone.getMoistureSensors());
+                    existingZone.setDisplayPosition(zone.getDisplayPosition());
                     return zoneRepository.save(existingZone);
                 });
     }
