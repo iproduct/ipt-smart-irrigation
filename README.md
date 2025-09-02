@@ -1,13 +1,13 @@
 # IPT - Intellectual Products &amp; Technologies [ https://iproduct.org ] Smart Irrigation Project
 
 
-# Smart Irrigation Dashboard (React Client)
+## Smart Irrigation Dashboard (React Client)
 
-## Project Description
+### Project Description
 
 This project is the React client for a Smart Irrigation system. It provides a dashboard for monitoring sensor data (flow, moisture, temperature, humidity), controlling irrigation valves, and managing irrigation zones. The client communicates with a backend API via WebSockets for real-time data and REST API for zone management.
 
-## React Client Overview
+### React Client Overview
 
 The client application is built using React with TypeScript and utilizes the Material-UI component library for a modern and responsive user interface. It features:
 
@@ -17,17 +17,17 @@ The client application is built using React with TypeScript and utilizes the Mat
 *   **Historical Data Visualization**: Uses Echarts to display historical flow volume and moisture sensor data in separate, resizable charts.
 *   **Responsive Design**: The dashboard is designed to adapt to various screen sizes.
 
-## Setup and Installation
+### Setup and Installation
 
 To set up and run the React client application locally, follow these steps:
 
-### Prerequisites
+#### Prerequisites
 
 *   Node.js (LTS version recommended)
 *   npm (Node Package Manager)
 *   A running backend API for zone management and WebSocket server for sensor data (e.g., at `http://192.168.0.17:8080`).
 
-### Installation Steps
+#### Installation Steps
 
 1.  **Clone the repository (if you haven't already):**
     ```bash
@@ -41,7 +41,7 @@ To set up and run the React client application locally, follow these steps:
     npm install
     ```
 
-## Running the Application
+### Running the Application
 
 To start the development server and run the React client:
 
@@ -51,12 +51,12 @@ npm run dev
 
 This will usually open the application in your default web browser at `http://localhost:5173` (or another available port).
 
-## Important Notes
+### Important Notes
 
 *   **Backend API**: This client relies on a separate backend API for full functionality. Ensure your backend is running and accessible at the configured endpoints (`http://192.168.0.17:8080/api/zones` for REST and `ws://192.168.0.17:8080/ws` for WebSockets).
 *   **Zone Configuration**: The dashboard's flowmeter and moisture sensor visualizations are tied to the `valveNumber`, `flowmeter`, and `moistureSensors` properties configured in the Zone Management page. Ensure these are correctly set up in your zones for accurate display.
 
-## Technologies Used
+### Technologies Used
 
 *   React
 *   TypeScript
@@ -65,7 +65,7 @@ This will usually open the application in your default web browser at `http://lo
 *   React Router
 *   WebSockets (for real-time data)
 
-## Further Development
+### Further Development
 
 Here are some ideas for extending this project:
 
@@ -77,11 +77,11 @@ Here are some ideas for extending this project:
 *   **Mobile Responsiveness**: Optimize the layout and components specifically for mobile devices.
 *   **Backend Integration**: Connect to actual hardware for sensor readings and valve control.
 
-# Smart Irrigation Backend
+## Smart Irrigation Backend
 
 This project implements the backend for a smart irrigation system using Spring Boot, Spring WebFlux, Apache Kafka, and CoAP. It is designed to communicate with IoT irrigation controllers, process sensor data, and manage irrigation zones reactively.
 
-## Features
+### Features
 
 *   **Reactive Web Services**: RESTful APIs for managing irrigation zones.
 *   **CoAP Server**: Communication with IoT irrigation controllers for sensor data and commands.
@@ -89,27 +89,27 @@ This project implements the backend for a smart irrigation system using Spring B
 *   **Reactive MongoDB Persistence**: Storage and retrieval of irrigation zone configurations.
 *   **WebSockets**: Real-time sensor data visualization in the frontend.
 
-## Backend Architecture
+### Backend Architecture
 
 The application is built around a reactive and event-driven architecture.
 
-### 1. Spring Boot Application (`KafkaStreamsRobotDemoApplication`)
+#### 1. Spring Boot Application (`KafkaStreamsRobotDemoApplication`)
 This is the main entry point of the application, configuring and starting the various servers and services.
 
-### 2. Spring WebFlux Server
+#### 2. Spring WebFlux Server
 Provides reactive RESTful endpoints and serves the frontend application.
 *   **`ZoneHandler`**: Handles HTTP requests for CRUD operations on `Zone` entities (e.g., finding zones by ID or name, creating, updating, deleting zones, and getting the total count).
 *   **`ZoneRouter`**: Defines the functional routes for the `/api/zones` endpoint, mapping HTTP methods (GET, POST, PUT, DELETE) to the corresponding `ZoneHandler` methods.
 *   **`WebConfig`**: Configures WebFlux, including CORS settings, and registers the `ZoneRouter` to make the zone management endpoints accessible. It also configures a WebSocket endpoint.
 
-### 3. CoAP Server
+#### 3. CoAP Server
 Facilitates communication with CoAP-enabled IoT irrigation controllers.
 *   **`HelloResource`**: A simple endpoint for testing CoAP connectivity.
 *   **`TimeResource`**: Provides the current server time to CoAP clients.
 *   **`RegisterClientResource`**: Allows IoT controllers to register themselves with the backend, providing their IP and port for future command delivery.
 *   **`SensorsResource`**: Receives sensor data (e.g., flow, moisture) from irrigation controllers via PUT requests. This data is then processed and published to Kafka.
 
-### 4. Apache Kafka Integration
+#### 4. Apache Kafka Integration
 
 *   **Kafka Publisher**: Sensor data received via CoAP is published to a Kafka topic (e.g., `sweepDistances`).
 *   **Kafka Streams (`KafkaStreamsConfig`)**: Processes incoming sensor data streams. For example, it can aggregate sensor readings or detect specific events. The `kStream` bean defines a stream that consumes from "sweepDistances" and produces to "minSweepDistance" after some processing.
@@ -133,12 +133,12 @@ Manages the flow of sensor readings and commands within the application.
 *   **WebFlux REST -> ZoneService -> ZoneRepository -> MongoDB**: The WebFlux REST endpoints for zones interact with the `ZoneService`, which in turn uses the `ZoneRepository` to persist and retrieve `Zone` data from MongoDB.
 *   **WebFlux Frontend <-> WebFlux REST / WebSocket**: The frontend interacts with the WebFlux REST APIs for configuration and with the WebSocket endpoint for real-time data.
 
-## Data Models
+### Data Models
 
 *   **`Zone`**: Represents an irrigation zone, including its watering requirements, associated valve, flowmeter, and moisture sensors.
 *   **`IrrigationControllerState`**: Captures the current state of an irrigation controller, including its device ID, valve states, flow readings, and moisture sensor values.
 
-## Prerequisites
+### Prerequisites
 
 Before running the application, ensure you have the following installed:
 
@@ -147,7 +147,7 @@ Before running the application, ensure you have the following installed:
 *   **Apache Kafka**: A distributed streaming platform.
 *   **MongoDB**: A NoSQL document database.
 
-## How to Run
+### How to Run
 
 1.  **Start MongoDB**:
     Ensure your MongoDB instance is running, typically on `localhost:27017`. The database `smart_irrigation` will be created automatically upon first use.
@@ -176,7 +176,7 @@ Before running the application, ensure you have the following installed:
 6.  **Interacting with CoAP Devices**:
     CoAP clients can interact with the server on `coap://192.168.0.17:5683` (or the IP/port configured in `KafkaStreamsRobotDemoApplication`).
 
-## Future Enhancements
+### Future Enhancements
 
 *   Implement authentication and authorization for WebFlux endpoints.
 *   Add more sophisticated Kafka Streams topologies for advanced sensor data analytics.
