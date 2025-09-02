@@ -15,8 +15,6 @@ import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
 @Component
 public class ReactiveWebSocketHandler implements WebSocketHandler {
 
-    private Flux<String> intervalFlux = Flux.interval(Duration.ofMillis(1000)).map(n -> "" + n);
-
     @Autowired
     private ReactiveRobotService robotService;
 

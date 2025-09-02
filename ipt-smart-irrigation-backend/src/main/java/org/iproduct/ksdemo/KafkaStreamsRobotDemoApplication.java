@@ -78,10 +78,14 @@ public class KafkaStreamsRobotDemoApplication {
                     request.setPayload(commandStr);
                     request.send();
                     log.info("!!! Sent command: {}", request);
-                    Response response = request.waitForResponse(1000);
+                    Response response = request.waitForResponse(3000);
                     log.info("!!! Received: " + response);
-                    val commandAck = new CommandAcknowledgement("command_ack", command.getDeviceId(), response.getPayloadString());
-                    robotService.getSensorReadings().emitNext(mapper.writeValueAsString(commandAck), FAIL_FAST);
+                    if (response != null) {
+                        val commandAck = new CommandAcknowledgement("command_ack", command.getDeviceId(), response.getPayloadString());
+                        robotService.getSensorReadings().emitNext(mapper.writeValueAsString(commandAck), FAIL_FAST);
+                    } else {
+                        robotService.getSensorReadings().emitNext(String.format("{\"error\":\"%s\"}", "CoAP server response timed out."), FAIL_FAST);
+                    }
                 } catch (Exception e) {
                     log.error("Error sending command to robot: {}", e);
                     robotService.getSensorReadings().emitNext(String.format("{\"error\":\"%s\"}", e.getMessage()), FAIL_FAST);
