@@ -230,7 +230,7 @@ function App() {
                         )}
 
                         {/* Moisture Sensors Display */}
-                        {iotData && zone.moistureSensors.length > 0 && (
+                        {iotData && zone.moistureSensors?.length > 0 && (
                           <Box sx={{ mt: 2 }}>
                             {zone.moistureSensors.map((sensorIndex) => (
                               <Typography variant="body2" sx={{ mt: 1 }} key={`moist-${zone.id}-${sensorIndex}`}>

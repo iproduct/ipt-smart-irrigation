@@ -17,4 +17,6 @@ public class Zone {
     private double wateringRequirementLiters;
     private long wateringIntervalHours;
     private int valveNumber;
+    private int flowmeter;
+    private int[] moistureSensors;
 }

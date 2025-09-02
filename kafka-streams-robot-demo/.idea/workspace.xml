@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="43f3977d-a5db-4f86-89fa-d0ea2896b8f2" name="Changes" comment="demo major update">
+      <change afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Californium3.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/Californium3.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/json-commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/docs/json-commands.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/kafka-commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/docs/kafka-commands.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/CoapSimpleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/CoapSimpleClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/KafkaStreamsRobotDemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/KafkaStreamsRobotDemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/kstream/KafkaStreamsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/kstream/KafkaStreamsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/kstream/KafkaTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/kstream/KafkaTemplateConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/kstream/KafkaTopicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/kstream/KafkaTopicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/model/ClientData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/model/ClientData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/model/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/model/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/model/CommandAcknowledgement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/model/CommandAcknowledgement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/model/IrrigationControllerState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/model/IrrigationControllerState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/model/Zone.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/model/Zone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/repository/ZoneRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/repository/ZoneRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/service/ReactiveRobotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/service/ReactiveRobotService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/service/RegisterClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/service/RegisterClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/service/ZoneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/service/ZoneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/web/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/web/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/web/handler/IndexPageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/web/handler/IndexPageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/web/handler/ReactiveWebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/web/handler/ReactiveWebSocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/web/handler/ZoneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/web/handler/ZoneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/iproduct/ksdemo/web/router/ZoneRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/java/org/iproduct/ksdemo/web/router/ZoneRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/resources/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/iproduct/ksdemo/KafkaStreamsRobotDemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ipt-smart-irrigation-backend/kafka-streams-robot-demo/src/test/java/org/iproduct/ksdemo/KafkaStreamsRobotDemoApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="kafka-streams-robot-demo" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;iproduct&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/iproduct/ipt-smart-irrigation.git&quot;,
+    &quot;accountId&quot;: &quot;d2beab1f-b49c-4200-ada1-8bf9db4401c6&quot;
+  }
+}</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2QQQm2voHv8adTbmQ2v1I89sLvb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;Spring Boot.KafkaStreamsRobotDemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SimpleKafkaConsumer.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.SimpleKafkaProducer.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IoT Gardening/smart_irrigation_2023/kafka-streams-robot-demo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;6e076717f8cdcfa18cfb8f1db6108421&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IoT Gardening\smart_irrigation_2023\kafka-streams-robot-demo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IoT Gardening\git\ipt-smart-irrigation\ipt-smart-irrigation-backend" />
+      <recent name="D:\IoT Gardening\git\ipt-smart-irrigation" />
+      <recent name="D:\IoT Gardening\smart_irrigation_2023\kafka-streams-robot-demo\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.iproduct.ksdemo.model" />
+      <recent name="org.iproduct.ksdemo.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="GoApplicationRunConfiguration" />
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.KafkaStreamsRobotDemoApplication">
+    <configuration name="CoapSimpleClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.iproduct.ksdemo.CoapSimpleClient" />
+      <module name="kafka-streams-robot-demo.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.iproduct.ksdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="ipt-smart-irrigation-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="ipt-smart-irrigation-demo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KafkaStreamsRobotDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="kafka-streams-robot-demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.iproduct.ksdemo.KafkaStreamsRobotDemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleKafkaConsumer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="kafka-streams-robot-demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.iproduct.ksdemo.SimpleKafkaConsumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.iproduct.ksdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleKafkaProducer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="kafka-streams-robot-demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.iproduct.ksdemo.SimpleKafkaProducer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.iproduct.ksdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SimpleKafkaProducer" />
+        <item itemvalue="Spring Boot.SimpleKafkaConsumer" />
+        <item itemvalue="Application.CoapSimpleClient" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="43f3977d-a5db-4f86-89fa-d0ea2896b8f2" name="Changes" comment="" />
+      <created>1685283483335</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685283483335</updated>
+      <workItem from="1685283484546" duration="564000" />
+      <workItem from="1685284074867" duration="2458000" />
+      <workItem from="1685286833278" duration="18586000" />
+      <workItem from="1685309492465" duration="30298000" />
+      <workItem from="1686328437801" duration="1892000" />
+      <workItem from="1693241783573" duration="11991000" />
+      <workItem from="1697030225419" duration="105000" />
+      <workItem from="1697030368359" duration="2719000" />
+      <workItem from="1756561593536" duration="52157000" />
+      <workItem from="1756819254410" duration="25000" />
+      <workItem from="1756819293509" duration="241000" />
+    </task>
+    <task id="LOCAL-00001" summary="kafka demos initial commit">
+      <created>1685367758007</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685367758007</updated>
+    </task>
+    <task id="LOCAL-00002" summary="demo major update">
+      <option name="closed" value="true" />
+      <created>1756678331158</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756678331158</updated>
+    </task>
+    <task id="LOCAL-00003" summary="demo major update">
+      <option name="closed" value="true" />
+      <created>1756678650369</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756678650369</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="kafka demos initial commit" />
+    <MESSAGE value="demo major update" />
+    <option name="LAST_COMMIT_MESSAGE" value="demo major update" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
