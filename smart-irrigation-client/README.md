@@ -1,5 +1,7 @@
 # Smart Irrigation Dashboard (React Client)
 
+![Alt text for the image](path/to/your/image.jpg)
+
 ## Project Description
 
 This project is the React client for a Smart Irrigation system. It provides a dashboard for monitoring sensor data (flow, moisture, temperature, humidity), controlling irrigation valves, and managing irrigation zones. The client communicates with a backend API via WebSockets for real-time data and REST API for zone management.

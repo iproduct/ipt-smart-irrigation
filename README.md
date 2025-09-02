@@ -1,11 +1,16 @@
 # IPT - Intellectual Products &amp; Technologies [ https://iproduct.org ] Smart Irrigation Project
 
+![Alt text for the image](docs/images/20250902_101628.jpg)
 
 ## Smart Irrigation Dashboard (React Client)
 
 ### Project Description
 
 This project is the React client for a Smart Irrigation system. It provides a dashboard for monitoring sensor data (flow, moisture, temperature, humidity), controlling irrigation valves, and managing irrigation zones. The client communicates with a backend API via WebSockets for real-time data and REST API for zone management.
+
+![Alt text for the image](docs/images/smart_irrigation03.jpg)
+
+![Alt text for the image](docs/images/smart_irrigation04.jpg)
 
 ### React Client Overview
 
