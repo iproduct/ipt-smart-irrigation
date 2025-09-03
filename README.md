@@ -1,4 +1,4 @@
-# IPT - Intellectual Products &amp; Technologies [ https://iproduct.org ] Smart Irrigation Project
+# IPT - Intellectual Products &amp; Technologies [https://iproduct.org] Smart Irrigation Project
 
 ![Alt text for the image](docs/images/20250902_101628.jpg)
 
